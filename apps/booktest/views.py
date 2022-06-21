@@ -31,12 +31,13 @@ class BookListAPIView(APIView):
 
         # 1、查询出所有图书模型
         books = BookInfo.objects.all()
-        serializer = BookInfoModelSerializer(instance=books, many=True)
+        # serializer = BookInfoModelSerializer(instance=books, many=True)
         # # 指定过滤后端为排序
         # filter_backends = [OrderingFilter]
         # # 指定排序字段
         # ordering_fields = ('bread', 'btitle')
         # filter_class = BookFilter  # 过滤类
+        filter_fields = ('btitle', 'bread')
         # 指定自定义分页器
         pagePagination = StandardPageNumberPagination()
         pagedata = pagePagination.paginate_queryset(books, request)  # 必须传两个参数,第一个queryset对象要分页的所有数量，第二个参数request
