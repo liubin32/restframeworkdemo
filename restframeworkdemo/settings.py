@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'rest_framework_jwt',
     'corsheaders',
     'django_filters',
+    'coreapi',
 ]
 REST_FRAMEWORK = {
     # 'DEFAULT_PAGINATION_CLASS': ('rest_framework.pagination.PageNumberPagination',),
