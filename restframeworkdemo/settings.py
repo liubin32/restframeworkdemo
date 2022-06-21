@@ -49,9 +49,16 @@ REST_FRAMEWORK = {
     # 'PAGE_SIZE': 2,  # 每页数目
     'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
     # 'EXCEPTION_HANDLER':'rest_framework.views.exception_handler',#系统默认
-    'EXCEPTION_HANDLER': 'apps.utils.exception.custom_exception_handler',
+    # 'EXCEPTION_HANDLER': 'apps.utils.exception.custom_exception_handler',
+    # 全局配置异常模块
+    'EXCEPTION_HANDLER': 'utils.exception.custom_exception_handler',
+    # 修改默认返回JSON的renderer的类
+    'DEFAULT_RENDERER_CLASSES': (
+        'utils.rendererresponse.customrenderer',
+    ),
 
 }
+
 
 # REST_FRAMEWORK = {
 #     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
