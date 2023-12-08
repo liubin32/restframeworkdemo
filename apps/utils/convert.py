@@ -1,5 +1,6 @@
 import requests
 import json
+from pyecharts.charts import Bar
 
 cookies = {
     'qgqp_b_id': 'f17d5415a30e368a9a326292bdb20b2b',
@@ -35,9 +36,28 @@ response = requests.get(
 )
 
 # 数据清洗
-print(response.text)
-print(type(response.text))
 
+print(response.text)
 res_dict = json.loads(response.text)
 print(res_dict)
-print(type(res_dict))
+datas = res_dict.get('data').get('diff')
+print(len(datas))
+for data in datas:
+    company = data.get('f14')
+    share_1 = data.get('f184')
+    share_5 = data.get('f165')
+    # share_10 = data.get('f175')
+    print(company)
+    print(share_1)
+    # print(share_5)
+    # print(share_10)
+
+    # 当天价格
+    price = data.get('f2')
+    print(price)
+# bar = Bar()
+# bar.add_xaxis(["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"])
+# bar.add_yaxis("商家A", [5, 20, 36, 10, 75, 90])
+# # render 会生成本地 HTML 文件，默认会在当前目录生成 render.html 文件
+# # 也可以传入路径参数，如 bar.render("mycharts.html")
+# bar.render("b.html")
